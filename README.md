@@ -1,6 +1,5 @@
-# MAR-3D
 ## [CVPR 2025 Highlight]
-## Progressive Masked Auto-regressor for High-Resolution 3D Generation*
+## MAR-3D:Progressive Masked Auto-regressor for High-Resolution 3D Generation*
 
 ### Links
 📄 **Paper**: [arXiv:2503.20519](https://arxiv.org/abs/2503.20519)  
