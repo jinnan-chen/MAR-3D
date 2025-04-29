@@ -2,9 +2,6 @@
 ## [CVPR 2025 Highlight]
 ## Progressive Masked Auto-regressor for High-Resolution 3D Generation*
 
-
----
-
 ### Links
 📄 **Paper**: [arXiv:2503.20519](https://arxiv.org/abs/2503.20519)  
 🌐 **Project Page**: [https://jinnan-chen.github.io/projects/MAR-3D/](https://jinnan-chen.github.io/projects/MAR-3D/)
