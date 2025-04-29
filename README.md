@@ -1,7 +1,7 @@
 # MAR-3D
 ## *Progressive Masked Auto-regressor for High-Resolution 3D Generation*
 
-<div align="center">
+<div align="center" style="margin: 20px 0; color: #FF8C00;">
 <b>CVPR 2025 Highlight</b>
 </div>
 
