@@ -1,4 +1,4 @@
-# MAR-3D (CVPR 2025 Highlight) 
+[frame.pdf](https://github.com/user-attachments/files/19956895/frame.pdf)# MAR-3D (CVPR 2025 Highlight) 
 MAR-3D Progressive Masked Auto-regressor for High-Resolution 3D Generation. (https://arxiv.org/abs/2503.20519)
 Project page: https://jinnan-chen.github.io/projects/MAR-3D/
 
@@ -8,12 +8,10 @@ Project page: https://jinnan-chen.github.io/projects/MAR-3D/
 
 
 
-@misc{chen2025mar3dprogressivemaskedautoregressor,
-      title={MAR-3D: Progressive Masked Auto-regressor for High-Resolution 3D Generation}, 
-      author={Jinnan Chen and Lingting Zhu and Zeyu Hu and Shengju Qian and Yugang Chen and Xin Wang and Gim Hee Lee},
-      year={2025},
-      eprint={2503.20519},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2503.20519}, 
+
+@article{chen2025mar3d,
+   title={MAR-3D: Progressive Masked Auto-regressor for High-Resolution 3D Generation},
+   author={Chen, Jinnan and Zhu, Lingting and Hu, Zeyu and Qian, Shengju and Chen, Yugang and Wang, Xin and Lee, Gim Hee},
+   journal={arXiv preprint arXiv:2503.00000},
+   year={2025}
 }
