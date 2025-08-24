@@ -2,10 +2,10 @@
 ## **MAR-3D:Progressive Masked Auto-regressor for High-Resolution 3D Generation**
 
 
-### Please prepare you preprocessed inputs points and supervision sdf/occ following https://github.com/wyysf-98/CraftsMan3D
+Please prepare you preprocessed inputs points and supervision sdf/occ following https://github.com/wyysf-98/CraftsMan3D
 (We are unable to release the preprocessing coed and data)
 
-### root_dir should contain .npz files，image file mapping is in objaverse.py
+root_dir should contain .npz files，image file mapping is in objaverse.py
 
 ### Links
 📄 **Paper**: [arXiv:2503.20519](https://arxiv.org/abs/2503.20519)  
