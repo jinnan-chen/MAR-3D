@@ -1,6 +1,11 @@
 ## [CVPR 2025 Highlight]
 ## **MAR-3D:Progressive Masked Auto-regressor for High-Resolution 3D Generation**
 
+
+Please prepare you preprocessed inputs points and supervision sdf/occ following https://github.com/wyysf-98/CraftsMan3D
+(We are unable to release the preprocessing coee and data)
+
+
 ### Links
 📄 **Paper**: [arXiv:2503.20519](https://arxiv.org/abs/2503.20519)  
 🌐 **Project Page**: [https://jinnan-chen.github.io/projects/MAR-3D/](https://jinnan-chen.github.io/projects/MAR-3D/)
