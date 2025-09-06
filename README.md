@@ -8,6 +8,10 @@ Please prepare you preprocessed inputs points and supervision sdf/occ following 
 root_dir should contain .npz files，image file mapping is in objaverse.py
 
 The trianing pipepline is also following CraftsMan3D's code base.
+
+## Training:
+bash train_diffusion.sh
+
 ### Links
 📄 **Paper**: [arXiv:2503.20519](https://arxiv.org/abs/2503.20519)  
 🌐 **Project Page**: [https://jinnan-chen.github.io/projects/MAR-3D/](https://jinnan-chen.github.io/projects/MAR-3D/)
