@@ -1,0 +1,99 @@
+exp_root_dir: "outputs"
+name: "image-to-shape-diffusion/mar"
+tag: "${rmspace:${system.shape_model_type}+n${data.n_samples}+noise${data.noise_sigma}+pfeat${system.shape_model.point_feats}+normemb${system.condition_model.normalize_embeds}+lr${system.optimizer.args.lr}+qkvbias${system.shape_model.qkv_bias}+nfreq${system.shape_model.num_freqs}+ln_post${system.shape_model.use_ln_post},_}"
+seed: 0
+data_type: "objaverse-datamodule"
+data:
+  root_dir: [""] #sample points and sdf/occ.npz
+  data_type: "sdf" 
+  n_samples: 20480
+  noise_sigma: 0.
+  load_supervision: false
+  supervision_type: "occupancy" 
+  n_supervision: 4096
+  load_image: True  # whether to load images 
+  image_data_path: ""
+  image_type: "rgb"           # rgb, normal, mvrgb, mvnormal
+  idx: [0,1,2,3,4,5,6,7]
+  n_views: 1
+  load_caption: false     # whether to load captions
+  batch_size: 12
+  num_workers: 8
+
+system_type: "mar-diffusion-system"
+system:
+  data_type: ${data_type}
+  shape_model_type: "michelangelo-autoencoder"
+  shape_model:
+    num_latents:  256 #1024 #512 #256
+    embed_dim: 64
+    point_feats: 3
+    out_dim: 1
+    num_freqs: 8
+    include_pi: false
+    heads: 12
+    width: 768
+    num_encoder_layers: 16 #16 #8
+    num_decoder_layers: 32 #32 #16
+    use_ln_post: true
+    init_scale: 0.25
+    qkv_bias: true
+    use_flash: true
+    use_checkpoint: true
+    use_downsample: false
+
+  condition_model_type: "clip-embedder"
+  condition_model:
+    pretrained_model_name_or_path: "openai/clip-vit-large-patch14"
+    encode_camera: false
+    camera_embeds_dim: 32 # 16 * 2[sin, cos]
+    n_views: ${data.n_views}
+    empty_embeds_ratio: 0.1
+    normalize_embeds: false
+    dino: true
+    zero_uncond_embeds: false
+  loggers:
+    wandb:
+      enable: false
+      project: "mar3d"
+      name: image-to-shape-diffusion+${name}+${tag}
+  loss:
+    loss_type: "mse"
+    lambda_diffusion: 1.
+  optimizer:
+    name: AdamW
+    args:
+      lr: 1.e-4
+      betas: [0.9, 0.99]
+      eps: 1.e-6
+  scheduler:
+    name: SequentialLR
+    interval: step
+    schedulers:
+      - name: LinearLR
+        interval: step
+        args:
+          start_factor: 1e-6
+          end_factor: 1.0
+          total_iters: 5000
+      - name: CosineAnnealingLR
+        interval: step
+        args:
+          T_max: 5000
+          eta_min: 0.
+    milestones: [5000]
+
+trainer:
+  num_nodes: 1
+  max_epochs: 100000
+  log_every_n_steps: 1
+  num_sanity_val_steps: 0
+  check_val_every_n_epoch: 2
+  enable_progress_bar: true
+  precision: 16-mixed
+  strategy: 'ddp_find_unused_parameters_true'
+
+checkpoint:
+  save_last: true
+  save_top_k: -1
+  every_n_train_steps: 5000
